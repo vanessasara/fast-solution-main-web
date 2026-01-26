@@ -125,3 +125,210 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Phase 8: Animation Keyframes */
+@layer utilities {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  /* Animation utility classes */
+  .animate-fadeIn {
+    animation: fadeIn 500ms ease-out both;
+  }
+
+  .animate-fadeUp {
+    animation: fadeUp 500ms ease-out both;
+  }
+
+  .animate-fadeDown {
+    animation: fadeDown 500ms ease-out both;
+  }
+
+  .animate-slideInLeft {
+    animation: slideInLeft 500ms ease-out both;
+  }
+
+  .animate-slideInRight {
+    animation: slideInRight 500ms ease-out both;
+  }
+
+  .animate-scaleIn {
+    animation: scaleIn 300ms ease-out both;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Stagger delays */
+  .animate-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animate-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animate-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animate-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animate-delay-500 {
+    animation-delay: 500ms;
+  }
+
+  /* Phase 12: Accessibility Utilities */
+
+  /* Screen reader only - visually hidden but accessible */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  /* Show on focus (for skip navigation) */
+  .sr-only:focus,
+  .sr-only:active {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: inherit;
+    margin: inherit;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+
+  /* Focus visible styles - keyboard navigation */
+  .focus-visible-ring {
+    outline: 3px solid #4F46E5;
+    outline-offset: 2px;
+  }
+
+  /* Reduce motion for users with motion sensitivity */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    * {
+      border-width: 2px;
+    }
+
+    button,
+    a {
+      text-decoration: underline;
+    }
+  }
+
+  /* Print styles */
+  @media print {
+    /* Hide non-essential elements */
+    nav,
+    aside,
+    footer {
+      display: none;
+    }
+
+    /* Expand links */
+    a[href]::after {
+      content: " (" attr(href) ")";
+    }
+
+    /* Avoid page breaks inside elements */
+    article,
+    section,
+    pre,
+    blockquote {
+      page-break-inside: avoid;
+    }
+  }
+}

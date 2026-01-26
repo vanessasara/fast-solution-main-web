@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Menu, Code, Megaphone, Printer, GraduationCap, Plane, MapPin, ShoppingBag, Building, Hotel } from 'lucide-react';
+import { ChevronDown, Menu, Code, Megaphone, Printer, GraduationCap, Plane, MapPin, ShoppingBag, Building, Hotel, User, LogOut, Settings } from 'lucide-react';
+import { useUser, SignOutButton } from '@clerk/nextjs';
 import {
   Sheet,
   SheetContent,
@@ -14,9 +15,11 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const services = [
   {
@@ -64,6 +67,7 @@ const services = [
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [sheetOpen, setSheetOpen] = useState(false);
+  const { isSignedIn, user } = useUser();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -134,12 +138,58 @@ export default function Header() {
               Contact
             </a>
 
-            <a
-              href="/sign-in"
-              className="px-6 py-2.5 bg-[#F97316] text-white rounded-lg hover:bg-[#EA580C] transition-all font-medium shadow-sm hover:shadow-md"
-            >
-              Login
-            </a>
+            {/* Authentication State */}
+            {isSignedIn ? (
+              <div className="flex items-center gap-4">
+                <a
+                  href="/dashboard"
+                  className="px-6 py-2.5 bg-[#4F46E5] text-white rounded-lg hover:bg-[#4338CA] transition-all font-medium shadow-sm hover:shadow-md"
+                >
+                  Dashboard
+                </a>
+
+                {/* User Dropdown */}
+                <DropdownMenu>
+                  <DropdownMenuTrigger className="outline-none">
+                    <Avatar className="w-10 h-10 cursor-pointer border-2 border-[#4F46E5]/20 hover:border-[#4F46E5] transition-colors">
+                      <AvatarImage src={user?.imageUrl} alt={user?.fullName || 'User'} />
+                      <AvatarFallback className="bg-[#4F46E5] text-white font-semibold">
+                        {user?.firstName?.charAt(0) || user?.username?.charAt(0) || 'U'}
+                      </AvatarFallback>
+                    </Avatar>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="w-56" align="end">
+                    <div className="px-2 py-1.5">
+                      <p className="text-sm font-medium text-slate-900">{user?.fullName || user?.username}</p>
+                      <p className="text-xs text-slate-500">{user?.primaryEmailAddress?.emailAddress}</p>
+                    </div>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem asChild>
+                      <a href="/dashboard" className="cursor-pointer flex items-center gap-2">
+                        <User className="w-4 h-4" />
+                        <span>Dashboard</span>
+                      </a>
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem asChild>
+                      <SignOutButton>
+                        <button className="w-full cursor-pointer flex items-center gap-2 text-red-600">
+                          <LogOut className="w-4 h-4" />
+                          <span>Logout</span>
+                        </button>
+                      </SignOutButton>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
+            ) : (
+              <a
+                href="/sign-in"
+                className="px-6 py-2.5 bg-[#F97316] text-white rounded-lg hover:bg-[#EA580C] transition-all font-medium shadow-sm hover:shadow-md"
+              >
+                Login
+              </a>
+            )}
           </nav>
 
           {/* Mobile Menu - Sheet */}
@@ -215,13 +265,54 @@ export default function Header() {
 
                   {/* Bottom CTA */}
                   <div className="p-6 border-t bg-[#FDF7F2]">
-                    <a
-                      href="/sign-in"
-                      className="block w-full px-6 py-3 bg-[#F97316] text-white text-center rounded-lg hover:bg-[#EA580C] transition-all font-medium shadow-sm hover:shadow-md"
-                      onClick={() => setSheetOpen(false)}
-                    >
-                      Login
-                    </a>
+                    {isSignedIn ? (
+                      <div className="space-y-3">
+                        {/* User Info */}
+                        <div className="flex items-center gap-3 px-4 py-3 bg-white rounded-lg">
+                          <Avatar className="w-10 h-10 border-2 border-[#4F46E5]/20">
+                            <AvatarImage src={user?.imageUrl} alt={user?.fullName || 'User'} />
+                            <AvatarFallback className="bg-[#4F46E5] text-white font-semibold text-sm">
+                              {user?.firstName?.charAt(0) || user?.username?.charAt(0) || 'U'}
+                            </AvatarFallback>
+                          </Avatar>
+                          <div className="flex-1 min-w-0">
+                            <p className="text-sm font-medium text-slate-900 truncate">
+                              {user?.fullName || user?.username}
+                            </p>
+                            <p className="text-xs text-slate-500 truncate">
+                              {user?.primaryEmailAddress?.emailAddress}
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Dashboard Button */}
+                        <a
+                          href="/dashboard"
+                          className="block w-full px-6 py-3 bg-[#4F46E5] text-white text-center rounded-lg hover:bg-[#4338CA] transition-all font-medium shadow-sm hover:shadow-md"
+                          onClick={() => setSheetOpen(false)}
+                        >
+                          Dashboard
+                        </a>
+
+                        {/* Logout Button */}
+                        <SignOutButton>
+                          <button
+                            className="w-full px-6 py-3 bg-white border-2 border-red-500 text-red-600 text-center rounded-lg hover:bg-red-50 transition-all font-medium"
+                            onClick={() => setSheetOpen(false)}
+                          >
+                            Logout
+                          </button>
+                        </SignOutButton>
+                      </div>
+                    ) : (
+                      <a
+                        href="/sign-in"
+                        className="block w-full px-6 py-3 bg-[#F97316] text-white text-center rounded-lg hover:bg-[#EA580C] transition-all font-medium shadow-sm hover:shadow-md"
+                        onClick={() => setSheetOpen(false)}
+                      >
+                        Login
+                      </a>
+                    )}
                   </div>
                 </div>
               </SheetContent>
