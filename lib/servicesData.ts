@@ -1,32 +1,5 @@
-import {
-  Code,
-  Megaphone,
-  Printer,
-  Hotel,
-  GraduationCap,
-  Plane,
-  Compass,
-  Building,
-  Monitor,
-  Server,
-  BarChart,
-  Target,
-  Package,
-  FileText,
-  Utensils,
-  Calendar,
-  BookOpen,
-  Users,
-  Ticket,
-  Globe,
-  Briefcase,
-  Map,
-  Home,
-  Key
-} from 'lucide-react';
-
 export interface ServiceFeature {
-  icon: any;
+  icon: string;
   title: string;
   description: string;
 }
@@ -92,32 +65,32 @@ export const servicesData: ServiceData[] = [
     ],
     features: [
       {
-        icon: Monitor,
+        icon: 'Monitor',
         title: 'Custom Software Development',
         description: 'Tailored applications built to your exact specifications using modern frameworks and best practices.'
       },
       {
-        icon: Server,
+        icon: 'Server',
         title: 'Cloud Infrastructure',
         description: 'Scalable cloud solutions on AWS, Azure, and Google Cloud with seamless migration services.'
       },
       {
-        icon: Code,
+        icon: 'Code',
         title: 'Web & Mobile Apps',
         description: 'Responsive web applications and native mobile apps for iOS and Android platforms.'
       },
       {
-        icon: Users,
+        icon: 'Users',
         title: 'IT Consulting',
         description: 'Strategic technology advisory to align IT initiatives with your business goals.'
       },
       {
-        icon: Target,
+        icon: 'Target',
         title: 'DevOps & CI/CD',
         description: 'Automated deployment pipelines and infrastructure as code for rapid development cycles.'
       },
       {
-        icon: Briefcase,
+        icon: 'Briefcase',
         title: 'Digital Transformation',
         description: 'End-to-end modernization of legacy systems and business processes.'
       }
@@ -237,32 +210,32 @@ export const servicesData: ServiceData[] = [
     ],
     features: [
       {
-        icon: Target,
+        icon: 'Target',
         title: 'Brand Strategy',
         description: 'Comprehensive brand positioning, identity development, and messaging frameworks that resonate.'
       },
       {
-        icon: Megaphone,
+        icon: 'Megaphone',
         title: 'Digital Marketing',
         description: 'SEO, SEM, PPC campaigns optimized for maximum reach and conversion across all platforms.'
       },
       {
-        icon: Users,
+        icon: 'Users',
         title: 'Social Media Management',
         description: 'Content creation, community engagement, and influencer partnerships that build loyal audiences.'
       },
       {
-        icon: BarChart,
+        icon: 'BarChart',
         title: 'Performance Analytics',
         description: 'Real-time campaign tracking, A/B testing, and data insights to optimize marketing spend.'
       },
       {
-        icon: FileText,
+        icon: 'FileText',
         title: 'Content Marketing',
         description: 'Blog posts, videos, infographics, and whitepapers that establish thought leadership.'
       },
       {
-        icon: Monitor,
+        icon: 'Monitor',
         title: 'Marketing Automation',
         description: 'Email campaigns, lead nurturing, and CRM integration for streamlined customer journeys.'
       }
@@ -382,32 +355,32 @@ export const servicesData: ServiceData[] = [
     ],
     features: [
       {
-        icon: Printer,
+        icon: 'Printer',
         title: 'Commercial Printing',
         description: 'Brochures, flyers, posters, and business stationery with superior quality and color accuracy.'
       },
       {
-        icon: Package,
+        icon: 'Package',
         title: 'Custom Packaging',
         description: 'Bespoke product packaging design and manufacturing that protects and showcases your products.'
       },
       {
-        icon: FileText,
+        icon: 'FileText',
         title: 'Large Format Printing',
         description: 'Banners, billboards, and signage for events, retail spaces, and outdoor advertising.'
       },
       {
-        icon: Target,
+        icon: 'Target',
         title: 'Label & Sticker Printing',
         description: 'Custom labels and stickers for products, promotions, and branding applications.'
       },
       {
-        icon: Briefcase,
+        icon: 'Briefcase',
         title: 'Corporate Materials',
         description: 'Professional letterheads, business cards, folders, and presentation materials.'
       },
       {
-        icon: Globe,
+        icon: 'Globe',
         title: 'Sustainable Solutions',
         description: 'Eco-friendly printing with recycled materials and environmentally conscious processes.'
       }
@@ -480,32 +453,32 @@ export const servicesData: ServiceData[] = [
     ],
     features: [
       {
-        icon: Hotel,
+        icon: 'Hotel',
         title: 'Hotel Management System',
         description: 'Complete property management with booking, check-in, and guest service features.'
       },
       {
-        icon: Utensils,
+        icon: 'Utensils',
         title: 'Restaurant Ordering Apps',
         description: 'Digital menus, table reservations, and contactless ordering for modern dining experiences.'
       },
       {
-        icon: Calendar,
+        icon: 'Calendar',
         title: 'Booking & Reservations',
         description: 'Real-time availability, instant confirmations, and automated reminders for guests.'
       },
       {
-        icon: Globe,
+        icon: 'Globe',
         title: 'Tourism Platforms',
         description: 'Destination guides, tour packages, and activity bookings all in one platform.'
       },
       {
-        icon: Users,
+        icon: 'Users',
         title: 'Guest Engagement',
         description: 'Loyalty programs, feedback systems, and personalized recommendations.'
       },
       {
-        icon: BarChart,
+        icon: 'BarChart',
         title: 'Analytics Dashboard',
         description: 'Business insights, occupancy rates, and revenue tracking for data-driven decisions.'
       }
@@ -625,32 +598,32 @@ export const servicesData: ServiceData[] = [
     ],
     features: [
       {
-        icon: GraduationCap,
+        icon: 'GraduationCap',
         title: 'Foreign Education Consulting',
         description: 'University selection, application support, and admission guidance for top international institutions.'
       },
       {
-        icon: BookOpen,
+        icon: 'BookOpen',
         title: 'Soft Skills Training',
         description: 'Leadership, communication, teamwork, and emotional intelligence workshops.'
       },
       {
-        icon: Users,
+        icon: 'Users',
         title: 'Language Courses',
         description: 'IELTS, TOEFL, and foreign language training for academic and professional success.'
       },
       {
-        icon: Briefcase,
+        icon: 'Briefcase',
         title: 'Career Counseling',
         description: 'Resume building, interview prep, and career path guidance from industry experts.'
       },
       {
-        icon: Globe,
+        icon: 'Globe',
         title: 'Visa & Immigration',
         description: 'Complete assistance with student visa applications and immigration procedures.'
       },
       {
-        icon: Target,
+        icon: 'Target',
         title: 'Pre-Departure Orientation',
         description: 'Cultural preparation, accommodation guidance, and settling-in support for students.'
       }
@@ -723,32 +696,32 @@ export const servicesData: ServiceData[] = [
     ],
     features: [
       {
-        icon: Plane,
+        icon: 'Plane',
         title: 'Flight Bookings',
         description: 'Domestic and international flights with access to all major airlines and best fares.'
       },
       {
-        icon: Hotel,
+        icon: 'Hotel',
         title: 'Hotel Reservations',
         description: 'Wide selection of accommodations from budget to luxury worldwide.'
       },
       {
-        icon: Ticket,
+        icon: 'Ticket',
         title: 'Visa Services',
         description: 'Tourist and business visa processing for all major destinations.'
       },
       {
-        icon: Globe,
+        icon: 'Globe',
         title: 'Holiday Packages',
         description: 'Curated vacation packages with flights, hotels, and activities included.'
       },
       {
-        icon: Calendar,
+        icon: 'Calendar',
         title: 'Group Travel',
         description: 'Customized group tours for families, corporate teams, and special occasions.'
       },
       {
-        icon: Target,
+        icon: 'Target',
         title: 'Travel Insurance',
         description: 'Comprehensive travel insurance coverage for peace of mind during your journey.'
       }
@@ -821,32 +794,32 @@ export const servicesData: ServiceData[] = [
     ],
     features: [
       {
-        icon: Compass,
+        icon: 'Compass',
         title: 'Business Consulting',
         description: 'Strategic planning, market entry strategies, and operational excellence guidance.'
       },
       {
-        icon: Briefcase,
+        icon: 'Briefcase',
         title: 'Travel Advisory',
         description: 'Expert advice on destinations, safety, logistics, and cultural considerations.'
       },
       {
-        icon: Map,
+        icon: 'Map',
         title: 'Market Research',
         description: 'In-depth analysis of target markets for international business expansion.'
       },
       {
-        icon: Users,
+        icon: 'Users',
         title: 'Corporate Travel Management',
         description: 'Comprehensive business travel solutions with cost optimization and policy compliance.'
       },
       {
-        icon: Target,
+        icon: 'Target',
         title: 'Risk Assessment',
         description: 'Travel risk evaluation, security briefings, and crisis management planning.'
       },
       {
-        icon: Globe,
+        icon: 'Globe',
         title: 'Destination Development',
         description: 'Tourism consulting for destinations, hotels, and travel businesses.'
       }
@@ -919,32 +892,32 @@ export const servicesData: ServiceData[] = [
     ],
     features: [
       {
-        icon: Building,
+        icon: 'Building',
         title: 'Property Sales',
         description: 'Residential and commercial properties with complete documentation and legal support.'
       },
       {
-        icon: Home,
+        icon: 'Home',
         title: 'Rental Services',
         description: 'Find perfect rental properties or list your property with our extensive tenant network.'
       },
       {
-        icon: Key,
+        icon: 'Key',
         title: 'Property Management',
         description: 'Complete management services for property owners including maintenance and tenant relations.'
       },
       {
-        icon: Target,
+        icon: 'Target',
         title: 'Investment Consulting',
         description: 'Expert advice on property investments, market trends, and ROI analysis.'
       },
       {
-        icon: Map,
+        icon: 'Map',
         title: 'Location Analysis',
         description: 'Detailed neighborhood insights, amenities, and future development plans.'
       },
       {
-        icon: Briefcase,
+        icon: 'Briefcase',
         title: 'Commercial Real Estate',
         description: 'Office spaces, retail properties, and industrial facilities for businesses.'
       }

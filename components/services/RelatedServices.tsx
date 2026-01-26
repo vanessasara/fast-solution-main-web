@@ -4,13 +4,14 @@ import React from 'react';
 import Link from 'next/link';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, type LucideIcon } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import { getIcon } from '@/lib/iconMap';
 
 interface RelatedService {
   slug: string;
   name: string;
   description: string;
-  icon: LucideIcon;
+  iconName: string;
 }
 
 interface RelatedServicesProps {
@@ -49,7 +50,7 @@ export default function RelatedServices({ services }: RelatedServicesProps) {
         {/* Services Grid */}
         <div className="grid md:grid-cols-3 gap-8">
           {services.map((service, index) => {
-            const Icon = service.icon;
+            const Icon = getIcon(service.iconName);
             return (
               <Card
                 key={index}

@@ -2,10 +2,10 @@
 
 import React from 'react';
 import { Card } from '@/components/ui/card';
-import { type LucideIcon } from 'lucide-react';
+import { getIcon } from '@/lib/iconMap';
 
 export interface Feature {
-  icon: LucideIcon;
+  icon: string;
   title: string;
   description: string;
 }
@@ -36,7 +36,7 @@ export default function ServiceFeatures({ features }: ServiceFeaturesProps) {
         {/* Features Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => {
-            const Icon = feature.icon;
+            const Icon = getIcon(feature.icon);
             return (
               <Card
                 key={index}
