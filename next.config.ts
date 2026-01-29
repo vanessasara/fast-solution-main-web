@@ -17,4 +17,9 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+// Bundle analyzer configuration (use ANALYZE=true pnpm build to analyze)
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
+export default withBundleAnalyzer(nextConfig);
