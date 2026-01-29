@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Menu, Code, Megaphone, Printer, GraduationCap, Plane, MapPin, ShoppingBag, Building, Hotel, User, LogOut, Settings } from 'lucide-react';
+import { ChevronDown, Menu, User, LogOut } from 'lucide-react';
 import { useUser, SignOutButton } from '@clerk/nextjs';
 import {
   Sheet,
@@ -20,49 +20,8 @@ import {
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-
-const services = [
-  {
-    title: "IT Solutions & Digital Tech",
-    icon: Code,
-    link: "/services/it-solutions-digital-tech"
-  },
-  {
-    title: "Marketing & Advertising",
-    icon: Megaphone,
-    link: "/services/marketing-advertising"
-  },
-  {
-    title: "Printing & Packaging",
-    icon: Printer,
-    link: "/services/printing-packaging"
-  },
-  {
-    title: "Hospitality & Tourism App",
-    icon: Hotel,
-    link: "/services/hospitality-tourism-app"
-  },
-  {
-    title: "Soft Skills & Foreign Education",
-    icon: GraduationCap,
-    link: "/services/soft-skills-foreign-education"
-  },
-  {
-    title: "Travel Agency & Ticketing",
-    icon: Plane,
-    link: "/services/travel-agency-ticketing"
-  },
-  {
-    title: "Consultant & Travel Advisory",
-    icon: MapPin,
-    link: "/services/consultant-travel-advisory"
-  },
-  {
-    title: "Real Estate",
-    icon: Building,
-    link: "/services/real-estate"
-  },
-];
+import { services } from '@/components/header/servicesData';
+import { ServiceMenuItem } from '@/components/header/ServiceMenuItem';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -112,22 +71,11 @@ export default function Header() {
                 <ChevronDown className="w-4 h-4" />
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-80" align="start">
-                {services.map((service, index) => {
-                  const Icon = service.icon;
-                  return (
-                    <DropdownMenuItem key={index} asChild>
-                      <a
-                        href={service.link}
-                        className="flex items-center gap-3 px-3 py-3 cursor-pointer hover:bg-[#FDF7F2]"
-                      >
-                        <div className="w-9 h-9 bg-[#4F46E5]/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                          <Icon className="w-5 h-5 text-[#4F46E5]" />
-                        </div>
-                        <span className="text-sm font-medium text-slate-700">{service.title}</span>
-                      </a>
-                    </DropdownMenuItem>
-                  );
-                })}
+                {services.map((service, index) => (
+                  <DropdownMenuItem key={index} asChild>
+                    <ServiceMenuItem {...service} />
+                  </DropdownMenuItem>
+                ))}
               </DropdownMenuContent>
             </DropdownMenu>
 
@@ -232,22 +180,11 @@ export default function Header() {
                           Our Services
                         </h3>
                         <div className="space-y-1">
-                          {services.map((service, index) => {
-                            const Icon = service.icon;
-                            return (
-                              <a
-                                key={index}
-                                href={service.link}
-                                className="flex items-center gap-3 py-3 px-3 -mx-3 rounded-lg text-slate-700 hover:bg-[#FDF7F2] hover:text-[#4F46E5] transition-colors"
-                                onClick={() => setSheetOpen(false)}
-                              >
-                                <div className="w-9 h-9 bg-[#4F46E5]/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                                  <Icon className="w-5 h-5 text-[#4F46E5]" />
-                                </div>
-                                <span className="text-sm font-medium">{service.title}</span>
-                              </a>
-                            );
-                          })}
+                          {services.map((service, index) => (
+                            <div key={index} className="-mx-3">
+                              <ServiceMenuItem {...service} onClick={() => setSheetOpen(false)} />
+                            </div>
+                          ))}
                         </div>
                       </div>
 
